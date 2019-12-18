@@ -1,0 +1,80 @@
+favorites=exo-preferred-applications.desktop,exo-file-manager.desktop,urxvt.desktop,firefox.desktop,filezilla.desktop,discord.desktop,telegramdesktop.desktop,xfce-ui-settings.desktop,xfce-wm-settings.desktop,qt5ct.desktop
+recent=firefox.desktop,exo-file-manager.desktop,pidgin.desktop,urxvt.desktop,ca.desrt.dconf-editor.desktop,xfce-wmtweaks-settings.desktop,xfce-mouse-settings.desktop,qt5ct.desktop,wps-office-wpp.desktop,xfce-ui-settings.desktop
+button-title=\ 
+button-icon=/usr/share/pixmaps/xfce4-panel-menu.png
+button-single-row=false
+show-button-title=true
+show-button-icon=true
+launcher-show-name=true
+launcher-show-description=true
+launcher-show-tooltip=true
+item-icon-size=2
+hover-switch-category=true
+category-show-name=true
+category-icon-size=2
+load-hierarchy=true
+recent-items-max=10
+favorites-in-recent=true
+display-recent-default=true
+position-search-alternate=true
+position-commands-alternate=true
+position-categories-alternate=true
+stay-on-focus-out=false
+confirm-session-command=false
+menu-width=451
+menu-height=608
+menu-opacity=90
+command-settings=xfce4-settings-manager
+show-command-settings=true
+command-lockscreen=betterlockscreen -l dimblur
+show-command-lockscreen=true
+command-switchuser=xfce4-session-logout -u
+show-command-switchuser=false
+command-logoutuser=xfce4-session-logout --logout --fast
+show-command-logoutuser=false
+command-restart=xfce4-session-logout --reboot --fast
+show-command-restart=false
+command-shutdown=xfce4-session-logout --halt --fast
+show-command-shutdown=false
+command-suspend=xfce4-session-logout --suspend
+show-command-suspend=true
+command-hibernate=xfce4-session-logout --hibernate
+show-command-hibernate=false
+command-logout=xfce4-session-logout
+show-command-logout=true
+command-menueditor=menulibre
+show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=true
+search-actions=5
+
+[action0]
+name=Man Pages
+pattern=#
+command=exo-open --launch TerminalEmulator man %s
+regex=false
+
+[action1]
+name=Web Search
+pattern=?
+command=exo-open --launch WebBrowser https://google.com/?q=%u
+regex=false
+
+[action2]
+name=Wikipedia
+pattern=!w
+command=exo-open --launch WebBrowser https://en.wikipedia.org/wiki/%u
+regex=false
+
+[action3]
+name=Run in Terminal
+pattern=!
+command=exo-open --launch TerminalEmulator %s
+regex=false
+
+[action4]
+name=Open URI
+pattern=^(file|http|https):\\/\\/(.*)$
+command=exo-open \\0
+regex=true
+
