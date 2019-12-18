@@ -1,0 +1,39 @@
+#!/bin/sh
+#mkdir "$HOME/private"; encfs "$HOME/.private" "$HOME/private"; echo "Mounted Directory";;
+
+
+helps()
+{
+	echo "usage: encfolder [OPTION] [FOLDER]"
+	echo ""
+	echo "options:"
+	echo "  -m, --mount 		Mount encrypted folder"
+	echo "  -u, --unmount 	Unmount encrypted folder"
+	echo "  -p, --password 	Change password of encrypted folder"
+	echo ""
+	echo "  -h, --help 		Show this help"
+	echo ""
+	echo "Example:"
+	echo "  encfolder --mount docs"
+	echo ""	
+}
+
+if [ $# -eq 2 ]; then
+	case "$1" in
+		"--mount") 		mkdir "$HOME/$2"; encfs "$HOME/.$2" "$HOME/$2"; echo "Mounted Directory";;			
+		"-m") 			mkdir "$HOME/$2"; encfs "$HOME/.$2" "$HOME/$2"; echo "Mounted Directory";;
+		"--unmount") 	fusermount -u "$HOME/$2"; rm -R "$HOME/$2"; echo "Unmounted Directory";;				
+		"-u") 			fusermount -u "$HOME/$2"; rm -R "$HOME/$2"; echo "Unmounted Directory";;
+		"--password") 	encfsctl passwd "$HOME/.$2"; echo "Password Changed";;
+		"-p") 			encfsctl passwd "$HOME/.$2"; echo "Password Changed";;
+		*) 				helps; echo "ERROR: Wrong encfolder option!";;
+	esac
+else
+	case "$1" in
+		"--help")	helps;;
+		"-h")		helps;;
+		*) 			helps; echo "ERROR: Wrong encfolder option!";;
+	esac	
+fi
+
+exit

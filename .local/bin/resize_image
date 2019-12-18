@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $# -eq 2 ]; then
+	convert "$1" -colorspace RGB +sigmoidal-contrast 11.6933   -define filter:filter=Sinc -define filter:window=Jinc -define filter:lobes=3   -geometry 1920x1080 -sigmoidal-contrast 11.6933 -colorspace sRGB "$2"
+else
+	echo "Incorrect inputs"
+fi
